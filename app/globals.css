@@ -1,21 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #3d5fa6;
-  --primary-hover: #1e40af;
+  --background: #0d1117;
+  --foreground: #e8dcc8;
+  --primary: #c9a84c;
+  --primary-hover: #d4b85c;
 
-  --surface: #ffffff;
-  --surface-alt: #f3f4f6;
-  --border: #d1d5db;
-  --text-muted: #6b7280;
-  --text-subtle: #9ca3af;
-  --hover-bg: #f9fafb;
-  --overlay: rgba(0, 0, 0, 0.5);
+  --surface: #161b22;
+  --surface-alt: #1c2330;
+  --border: #c9a84c33;
+  --border-accent: #c9a84c;
+  --text-muted: #a09880;
+  --text-subtle: #6b6355;
+  --hover-bg: #1c2330;
+  --overlay: rgba(0, 0, 0, 0.7);
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -30,7 +31,7 @@
     --hover-bg: #1f2937;
     --overlay: rgba(0, 0, 0, 0.7);
   }
-}
+}*/
 
 @theme inline {
   --color-background: var(--background);
@@ -41,6 +42,7 @@
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);
   --color-border: var(--border);
+  --color-border-accent: var(--border-accent);
   --color-text-muted: var(--text-muted);
   --color-text-subtle: var(--text-subtle);
   --color-hover-bg: var(--hover-bg);
@@ -54,4 +56,56 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Art deco decorative divider */
+.deco-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 200px;
+}
+
+.deco-divider::before,
+.deco-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-accent);
+}
+
+.deco-divider::before {
+  background: linear-gradient(to right, transparent, var(--border-accent));
+}
+
+.deco-divider::after {
+  background: linear-gradient(to left, transparent, var(--border-accent));
+}
+
+/* Art deco corner frame */
+.deco-frame {
+  position: relative;
+}
+
+.deco-frame::before,
+.deco-frame::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--border-accent);
+  border-style: solid;
+}
+
+.deco-frame::before {
+  top: -4px;
+  left: -4px;
+  border-width: 2px 0 0 2px;
+}
+
+.deco-frame::after {
+  bottom: -4px;
+  right: -4px;
+  border-width: 0 2px 2px 0;
 }

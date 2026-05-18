@@ -124,28 +124,41 @@ export default function ProSite() {
 
   return (
     <div className="min-h-screen">
-      <section className="max-w-3xl mx-auto px-6 py-24">
-        <h1 className="text-4xl font-bold mb-4">Anna Wallström</h1>
-        <p className="text-lg text-text-muted">
+      {/* Hero */}
+      <section className="max-w-3xl mx-auto px-6 pt-32 pb-16 text-center">
+        <p className="text-sm tracking-[0.3em] text-primary uppercase mb-4">
+          Software Developer
+        </p>
+        <h1 className="text-5xl font-serif font-bold mb-6 tracking-wide">
+          Anna Wallström
+        </h1>
+        <div className="deco-divider">
+          <span className="text-primary text-lg">◆</span>
+        </div>
+        <p className="text-lg text-text-muted max-w-xl mx-auto leading-relaxed">
           Fullstack developer who thrives across the entire stack — from
           database design and API architecture to polished, responsive UIs.
         </p>
       </section>
 
-      <section className="max-w-3xl mx-auto px-6 py-12">
-        <h2 className="text-2xl font-bold mb-6">Tech Stack</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
+      {/* Tech Stack */}
+      <section className="max-w-3xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
+          Tech Stack
+        </h2>
+        <div className="deco-divider mb-8">
+          <span className="text-primary text-sm">◆</span>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2">
           {Object.entries(techStack).map(([category, items]) => (
-            <div key={category}>
-              <h3 className="text-sm font-medium text-text-muted mb-2">
+            <div key={category} className="deco-frame p-5 border border-border">
+              <h3 className="text-xs font-medium tracking-[0.2em] text-primary uppercase mb-3">
                 {category}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {items.map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1 text-sm bg-surface rounded"
-                  >
+                {items.map((item, i) => (
+                  <span key={item} className="text-sm text-text-muted">
+                    {i > 0 && <span className="text-text-subtle mr-2">·</span>}
                     {item}
                   </span>
                 ))}
@@ -155,26 +168,43 @@ export default function ProSite() {
         </div>
       </section>
 
-      <section className="max-w-3xl mx-auto px-6 py-12">
-        <h2 className="text-2xl font-bold mb-6">Projects</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
+      {/* Projects */}
+      <section className="max-w-3xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
+          Projects
+        </h2>
+        <div className="deco-divider mb-8">
+          <span className="text-primary text-sm">◆</span>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <button
               key={project.title}
               onClick={() => setSelectedProject(project)}
-              className="text-left p-4 border border-border rounded-lg hover:border-text-subtle transition-colors"
+              className="deco-frame text-left p-6 border border-border hover:border-border-accent transition-colors"
             >
-              <h3 className="font-bold mb-1">{project.title}</h3>
-              <p className="text-sm text-text-muted">{project.summary}</p>
-              <p className="text-xs text-text-subtle mt-2">{project.tech}</p>
+              <h3 className="font-serif font-bold text-lg mb-1">
+                {project.title}
+              </h3>
+              <p className="text-sm text-text-muted mb-2">{project.summary}</p>
+              <p className="text-xs text-text-subtle">{project.tech}</p>
             </button>
           ))}
         </div>
       </section>
 
-      <section className="max-w-3xl mx-auto px-6 py-12 pb-24">
-        <h2 className="text-2xl font-bold mb-6">Contact</h2>
-        <form onSubmit={handleContact} className="flex flex-col gap-4 max-w-md">
+      {/* Contact */}
+      <section className="max-w-3xl mx-auto px-6 py-16 pb-32">
+        <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
+          Contact
+        </h2>
+        <div className="deco-divider mb-8">
+          <span className="text-primary text-sm">◆</span>
+        </div>
+        <form
+          onSubmit={handleContact}
+          className="flex flex-col gap-4 max-w-md mx-auto"
+        >
           <input
             type="text"
             placeholder="Your name"
@@ -182,7 +212,7 @@ export default function ProSite() {
             onChange={(e) =>
               setContactForm({ ...contactForm, name: e.target.value })
             }
-            className="px-4 py-2 border border-border rounded bg-transparent"
+            className="px-4 py-2 border border-border bg-surface rounded focus:border-border-accent focus:outline-none transition-colors"
           />
           <input
             type="email"
@@ -191,7 +221,7 @@ export default function ProSite() {
             onChange={(e) =>
               setContactForm({ ...contactForm, email: e.target.value })
             }
-            className="px-4 py-2 border border-border rounded bg-transparent"
+            className="px-4 py-2 border border-border bg-surface rounded focus:border-border-accent focus:outline-none transition-colors"
           />
           <textarea
             placeholder="Message"
@@ -200,20 +230,20 @@ export default function ProSite() {
             onChange={(e) =>
               setContactForm({ ...contactForm, message: e.target.value })
             }
-            className="px-4 py-2 border border-border rounded bg-transparent resize-none"
+            className="px-4 py-2 border border-border bg-surface rounded resize-none focus:border-border-accent focus:outline-none transition-colors"
           />
           <button
             type="submit"
             disabled={!canSend}
-            className="px-6 py-2 bg-primary text-white rounded font-medium hover:bg-primary-hover transition-colors self-start disabled:opacity-50"
+            className="px-6 py-2 bg-primary text-background rounded font-medium hover:bg-primary-hover transition-colors self-center disabled:opacity-50 tracking-wide"
           >
             {formStatus === "sending" ? "Sending..." : "Send"}
           </button>
           {formStatus === "sent" && (
-            <p className="text-sm text-primary">Message sent!</p>
+            <p className="text-sm text-primary text-center">Message sent!</p>
           )}
           {formStatus === "error" && (
-            <p className="text-sm text-red-500">
+            <p className="text-sm text-red-500 text-center">
               Something went wrong. Try again.
             </p>
           )}
