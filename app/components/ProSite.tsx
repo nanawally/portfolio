@@ -44,48 +44,6 @@ const projects: Project[] = [
   },
 ];
 
-function ProjectModal({
-  project,
-  onClose,
-}: {
-  project: Project;
-  onClose: () => void;
-}) {
-  return (
-    <div
-      className="fixed inset-0 bg-overlay flex items-center justify-center z-50 p-4"
-      onClick={onClose}
-    >
-      <div
-        className="bg-surface rounded-lg p-6 max-w-lg w-full"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-        <p className="text-sm text-text-muted mb-4">{project.tech}</p>
-        <p className="text-foreground mb-4">{project.description}</p>
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline text-sm"
-          >
-            Live demo →
-          </a>
-        )}
-        <div className="mt-6 text-right">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 text-sm border border-border rounded hover:bg-hover-bg"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function ProSite() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [contactForm, setContactForm] = useState({
@@ -176,19 +134,51 @@ export default function ProSite() {
         <div className="deco-divider mb-8">
           <span className="text-primary text-sm">◆</span>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="flex flex-col gap-6">
           {projects.map((project) => (
-            <button
+            <div
               key={project.title}
-              onClick={() => setSelectedProject(project)}
-              className="deco-frame text-left p-6 border border-border hover:border-border-accent transition-colors"
+              className="deco-frame border border-border"
             >
-              <h3 className="font-serif font-bold text-lg mb-1">
-                {project.title}
-              </h3>
-              <p className="text-sm text-text-muted mb-2">{project.summary}</p>
-              <p className="text-xs text-text-subtle">{project.tech}</p>
-            </button>
+              <button
+                onClick={() =>
+                  setSelectedProject(
+                    selectedProject?.title === project.title ? null : project,
+                  )
+                }
+                className="w-full text-left p-6 flex items-center justify-between"
+              >
+                <div>
+                  <h3 className="font-serif font-bold text-lg">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-text-muted">{project.summary}</p>
+                </div>
+                <span className="text-primary text-sm ml-4">
+                  {selectedProject?.title === project.title ? "▲" : "▼"}
+                </span>
+              </button>
+              {selectedProject?.title === project.title && (
+                <div className="px-6 pb-6 border-t border-border pt-4">
+                  <p className="text-xs tracking-[0.15em] text-primary uppercase mb-3">
+                    {project.tech}
+                  </p>
+                  <p className="text-text-muted leading-relaxed mb-3">
+                    {project.description}
+                  </p>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline text-sm"
+                    >
+                      Live demo →
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </section>
@@ -249,13 +239,6 @@ export default function ProSite() {
           )}
         </form>
       </section>
-
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
-      )}
     </div>
   );
 }
