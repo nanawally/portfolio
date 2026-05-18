@@ -88,6 +88,39 @@ function ProjectModal({
 
 export default function ProSite() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactForm.email);
+  const canSend =
+    contactForm.name.trim() !== "" &&
+    isValidEmail &&
+    contactForm.message.trim() !== "" &&
+    formStatus !== "sending";
+
+  async function handleContact(e: React.FormEvent) {
+    e.preventDefault();
+    if (!canSend) return;
+    setFormStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contactForm),
+      });
+      if (!res.ok) throw new Error();
+      setFormStatus("sent");
+      setContactForm({ name: "", email: "", message: "" });
+    } catch {
+      setFormStatus("error");
+    }
+  }
 
   return (
     <div className="min-h-screen">
@@ -111,7 +144,7 @@ export default function ProSite() {
                 {items.map((item) => (
                   <span
                     key={item}
-                    className="px-3 py-1 text-sm border border-border rounded-full"
+                    className="px-3 py-1 text-sm bg-surface rounded"
                   >
                     {item}
                   </span>
@@ -141,37 +174,49 @@ export default function ProSite() {
 
       <section className="max-w-3xl mx-auto px-6 py-12 pb-24">
         <h2 className="text-2xl font-bold mb-6">Contact</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            // TODO: wire up API route
-          }}
-          className="flex flex-col gap-4 max-w-md"
-        >
+        <form onSubmit={handleContact} className="flex flex-col gap-4 max-w-md">
           <input
             type="text"
             placeholder="Your name"
-            required
+            value={contactForm.name}
+            onChange={(e) =>
+              setContactForm({ ...contactForm, name: e.target.value })
+            }
             className="px-4 py-2 border border-border rounded bg-transparent"
           />
           <input
             type="email"
             placeholder="Your email"
-            required
+            value={contactForm.email}
+            onChange={(e) =>
+              setContactForm({ ...contactForm, email: e.target.value })
+            }
             className="px-4 py-2 border border-border rounded bg-transparent"
           />
           <textarea
             placeholder="Message"
             rows={4}
-            required
+            value={contactForm.message}
+            onChange={(e) =>
+              setContactForm({ ...contactForm, message: e.target.value })
+            }
             className="px-4 py-2 border border-border rounded bg-transparent resize-none"
           />
           <button
             type="submit"
-            className="px-6 py-2 bg-primary text-white rounded font-medium hover:bg-primary-hover transition-colors self-start"
+            disabled={!canSend}
+            className="px-6 py-2 bg-primary text-white rounded font-medium hover:bg-primary-hover transition-colors self-start disabled:opacity-50"
           >
-            Send
+            {formStatus === "sending" ? "Sending..." : "Send"}
           </button>
+          {formStatus === "sent" && (
+            <p className="text-sm text-primary">Message sent!</p>
+          )}
+          {formStatus === "error" && (
+            <p className="text-sm text-red-500">
+              Something went wrong. Try again.
+            </p>
+          )}
         </form>
       </section>
 
