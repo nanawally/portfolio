@@ -39,7 +39,7 @@ const projects: Project[] = [
     summary: "Recipe app",
     tech: "React, TypeScript, Tailwind",
     description:
-      "Built in a cross-functional team of 8. Recipe browsing, filtering, and creation with responsive design.",
+      "Built in a cross-functional team of 8. Recipe browsing and filtering with responsive design.",
     link: "https://smoothify2025.vercel.app/",
   },
 ];

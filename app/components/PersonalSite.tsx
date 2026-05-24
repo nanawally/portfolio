@@ -32,7 +32,7 @@ export default function PersonalSite() {
           anna's corner
         </h1>
         <p className="text-xs" style={{ color: "#888" }}>
-          welcome to my little corner of the internet ~
+          welcome to my own little corner of the internet
         </p>
       </div>
 
@@ -54,9 +54,9 @@ export default function PersonalSite() {
           </SideBox>
 
           <SideBox title="my status">
-            <p>currently: building this website and pretending it's 2004</p>
+            <p>currently: building everything that makes me say "ugh, i wish there was an app for that"</p>
           </SideBox>
-
+          
           <SideBox title="my time">
             <p className="text-center font-bold">{time}</p>
           </SideBox>
@@ -81,20 +81,19 @@ export default function PersonalSite() {
             welcome to my website!
           </h2>
           <p className="text-center text-xs mb-4" style={{ color: "#888" }}>
-            (best viewed with an open mind and a sense of nostalgia)
+            (i hope you like bright colours and sparkly things ✨)
           </p>
 
           <div className="space-y-3 leading-relaxed" style={{ color: "#555" }}>
             <p>
-              hello everyone, i'm anna! thanks for stopping by. this is the
-              non-professional side of my website — a place for me to put
-              whatever i want, however i want. think of it like a personal
-              homepage from the old internet.
+              hello, i'm anna! thanks for stopping by. this is the
+              personal side of my website, because honestly? we need to bring
+              back the web of the 00s.
             </p>
             <p>
-              by day i'm a fullstack developer (you can see the fancy version of
-              me by clicking the briefcase icon up there). but here? here is
-              just for fun :)
+              professionally i'm a fullstack developer (you can see the fancy version of
+              me by clicking the briefcase icon in the top right). but this part is 
+              where i put all of my other interests!
             </p>
             <p>
               this page will grow over time as i add more things — a blog, some
@@ -145,7 +144,8 @@ export default function PersonalSite() {
             <div>
               <p className="font-bold mb-1">favorites:</p>
               <ul className="space-y-0.5">
-                <li>★ coffee</li>
+                <li>★ ice coffee</li>
+                <li>★ music</li>
                 <li>★ building things</li>
                 <li>★ the old internet</li>
               </ul>
@@ -187,7 +187,7 @@ export default function PersonalSite() {
 
       {/* Footer */}
       <div className="text-center mt-6 text-xs" style={{ color: "#999" }}>
-        <p>made with ♥ and nostalgia — anna, 2026</p>
+        <p>made with ♥ — anna, 2026</p>
       </div>
     </div>
   );
