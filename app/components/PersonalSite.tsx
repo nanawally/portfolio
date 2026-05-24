@@ -37,9 +37,9 @@ export default function PersonalSite() {
       </div>
 
       {/* Three column layout */}
-      <div className="max-w-5xl mx-auto flex gap-3">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-3">
         {/* Left sidebar */}
-        <div className="w-48 shrink-0 flex flex-col gap-3">
+        <div className="flex md:flex-col gap-3 md:w-48 md:shrink-0 overflow-x-auto">
           <SideBox title="navigation">
             <ul className="space-y-1">
               {["home", "about me", "blog"].map((item) => (
@@ -154,7 +154,7 @@ export default function PersonalSite() {
         </div>
 
         {/* Right sidebar */}
-        <div className="w-48 shrink-0 flex flex-col gap-3">
+        <div className="flex md:flex-col gap-3 md:w-48 md:shrink-0 overflow-x-auto">
           <SideBox title="my links">
             <ul className="space-y-1">
               <li>
@@ -202,7 +202,7 @@ function SideBox({
 }) {
   return (
     <div
-      className="border-2 border-dashed p-2"
+      className="border-2 border-dashed p-2 min-w-40 md:min-w-0"
       style={{ borderColor: "#d8b4fe", background: "#fff9fb" }}
     >
       <h3
