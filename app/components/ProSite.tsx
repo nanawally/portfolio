@@ -7,6 +7,8 @@ type Project = {
   tech: string;
   description: string;
   link: string | null;
+  github: string | null;
+  demo: string | null;
 };
 
 const techStack = {
@@ -25,6 +27,8 @@ const projects: Project[] = [
     description:
       "Attendance tracking, real-time game modes (Poule, King of the Hill) with multi-device WebSocket sessions, group management, and role-based access control.",
     link: "https://chainlink.annawallstrom.com/",
+    github: null, // private repo,
+    demo: "Admin: jane@janedoe.com / test123 · User: john@johndoe.com / test123",
   },
   {
     title: "Music Runner",
@@ -33,6 +37,8 @@ const projects: Project[] = [
     description:
       "Thesis project with a self-taught game framework. Players run through levels synced to music, with a level editor and server-side song map validation.",
     link: "https://music-runner-gamma.vercel.app",
+    github: "https://github.com/nanawally/examensprojekt-frontend",
+    demo: null,
   },
   {
     title: "Smoothify",
@@ -41,6 +47,48 @@ const projects: Project[] = [
     description:
       "Built in a cross-functional team of 8. Recipe browsing and filtering with responsive design.",
     link: "https://smoothify2025.vercel.app/",
+    github: "https://github.com/nanawally/javauxproject2025",
+    demo: null,
+  },
+];
+
+const experience = [
+  {
+    title: "Internship (LIA)",
+    place: "TODO — company & role",
+    period: "TODO",
+    description: "TODO — what you did, what you learned",
+  },
+  {
+    title: "Service & Support",
+    place: "Ortivus (medtech)",
+    period: "TODO",
+    description:
+      "TODO — part-time support role, what the product was, what you handled",
+  },
+];
+
+const leadership = [
+  {
+    title: "Conductor & Artistic Director",
+    org: "Cantus Feminis, Norrlands Nation",
+    period: "2017–2024",
+    description:
+      "Led a women's choir for 7 years; repertoire selection, rehearsal planning, concert production. Two music scholarships awarded for this work.",
+  },
+  {
+    title: "Theatre Director",
+    org: "Norrlands Nations Spexensemble",
+    period: "2019, 2022, 2023",
+    description:
+      "Directed three full-scale student theatre productions (Frankentodd, Jakten på Atlantis, Mordet På Arvingarna).",
+  },
+  {
+    title: "Competition Choir Member",
+    org: "La Cappella",
+    period: "2016–present",
+    description:
+      "Ranked #3 worldwide among women's choirs. Member of the repertoire council since 2023.",
   },
 ];
 
@@ -166,6 +214,11 @@ export default function ProSite() {
                   <p className="text-text-muted leading-relaxed mb-3">
                     {project.description}
                   </p>
+                  {project.demo && (
+                    <p className="text-xs text-text-muted mb-3">
+                      Demo logins · {project.demo}
+                    </p>
+                  )}
                   {project.link && (
                     <a
                       href={project.link}
@@ -176,8 +229,76 @@ export default function ProSite() {
                       Live demo →
                     </a>
                   )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline text-sm ml-4"
+                    >
+                      GitHub →
+                    </a>
+                  )}
                 </div>
               )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section className="max-w-3xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
+          Experience
+        </h2>
+        <div className="deco-divider mb-8">
+          <span className="text-primary text-sm">◆</span>
+        </div>
+        <div className="flex flex-col gap-6">
+          {experience.map((exp) => (
+            <div
+              key={exp.title}
+              className="deco-frame border border-border p-6"
+            >
+              <div className="flex justify-between items-baseline mb-2">
+                <h3 className="font-serif font-bold text-lg">{exp.title}</h3>
+                <span className="text-sm text-text-muted">{exp.period}</span>
+              </div>
+              <p className="text-xs tracking-[0.15em] text-primary uppercase mb-2">
+                {exp.place}
+              </p>
+              <p className="text-text-muted leading-relaxed">
+                {exp.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Leadership & Volunteering */}
+      <section className="max-w-3xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
+          Leadership & Volunteering
+        </h2>
+        <div className="deco-divider mb-8">
+          <span className="text-primary text-sm">◆</span>
+        </div>
+        <div className="flex flex-col gap-6">
+          {leadership.map((item) => (
+            <div
+              key={item.title}
+              className="deco-frame border border-border p-6"
+            >
+              <div className="flex justify-between items-baseline mb-2">
+                <h3 className="font-serif font-bold text-lg">{item.title}</h3>
+                <span className="text-sm text-text-muted">{item.period}</span>
+              </div>
+              <p className="text-xs tracking-[0.15em] text-primary uppercase mb-2">
+                {item.org}
+              </p>
+              <p className="text-text-muted leading-relaxed">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
