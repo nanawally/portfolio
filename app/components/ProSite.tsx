@@ -55,16 +55,17 @@ const projects: Project[] = [
 const experience = [
   {
     title: "Internship (LIA)",
-    place: "TODO — company & role",
-    period: "TODO",
-    description: "TODO — what you did, what you learned",
+    place: "Fill Technology",
+    period: "jan 2026–may 2026",
+    description:
+      "Fullstack developer in an agile Scrum team building a recruitment platform in Kotlin/Spring Boot and Angular. Key contributions include a scheduled backup service with comprehensive test coverage (~960 tests, TDD), deep-linking across the full stack, and database query optimization (N+1). Daily work involves code reviews, pair programming, and event-driven architecture with Axon Framework.",
   },
   {
-    title: "Service & Support",
-    place: "Ortivus (medtech)",
-    period: "TODO",
+    title: "Service & Support Engineer",
+    place: "Ortivus MobiMed AB",
+    period: "nov 2024–dec 2025",
     description:
-      "TODO — part-time support role, what the product was, what you handled",
+      "Technical troubleshooting of software and hardware in ambulance care systems used across Scandinavia. Responsibilities included remote diagnostics, system configuration, log analysis, and coordinating with development teams on bug reports. Working in a safety-critical medical environment taught me precision, systematic problem-solving, and clear communication under pressure.",
   },
 ];
 
