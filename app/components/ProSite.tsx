@@ -69,6 +69,21 @@ const experience = [
   },
 ];
 
+const studies = [
+  {
+    title: "Java Fullstack Developer",
+    place: "Stockholms Tekniska Institut",
+    period: "2024–2026",
+    description: "Two-year vocational program focused on Java, Spring Boot, React, Typescript, TDD, and agile methodology. All courses completed with highest grade (VG).",
+  },
+  {
+    title: "Master of Arts in Musicology",
+    place: "Uppsala University",
+    period: "2016–2022",
+    description: "270 credits including academic writing, research methodology, and complex analysis. Developed strong skills in pattern recognition, structured argumentation, and independent project work.",
+  },
+];
+
 const leadership = [
   {
     title: "Conductor & Artistic Director",
@@ -270,6 +285,35 @@ export default function ProSite() {
               </p>
               <p className="text-text-muted leading-relaxed">
                 {exp.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Studies */}
+      <section className="max-w-3xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
+          Studies
+        </h2>
+        <div className="deco-divider mb-8">
+          <span className="text-primary text-sm">◆</span>
+        </div>
+        <div className="flex flex-col gap-6">
+          {studies.map((stud) => (
+            <div
+              key={stud.title}
+              className="deco-frame border border-border p-6"
+            >
+              <div className="flex justify-between items-baseline mb-2">
+                <h3 className="font-serif font-bold text-lg">{stud.title}</h3>
+                <span className="text-sm text-text-muted">{stud.period}</span>
+              </div>
+              <p className="text-xs tracking-[0.15em] text-primary uppercase mb-2">
+                {stud.place}
+              </p>
+              <p className="text-text-muted leading-relaxed">
+                {stud.description}
               </p>
             </div>
           ))}
