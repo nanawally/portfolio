@@ -161,6 +161,31 @@ export default function ProSite() {
           Fullstack developer who thrives across the entire stack — from
           database design and API architecture to polished, responsive UIs.
         </p>
+        <div className="flex justify-center gap-6 mt-6">
+          <a
+            href="https://www.linkedin.com/in/anna-wallstr%C3%B6m-368b72135/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline text-sm tracking-wide"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/nanawally"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline text-sm tracking-wide"
+          >
+            GitHub
+          </a>
+          <a
+            href="/CV-Anna-Wallstrom.pdf"
+            download
+            className="text-primary hover:underline text-sm tracking-wide"
+          >
+            Download CV
+          </a>
+        </div>
       </section>
 
       {/* Tech Stack */}
