@@ -29,7 +29,7 @@ export default function PersonalSite() {
             WebkitTextFillColor: "transparent",
           }}
         >
-          anna's corner
+          anna&apos;s corner
         </h1>
         <p className="text-xs" style={{ color: "#888" }}>
           welcome to my own little corner of the internet
@@ -54,7 +54,7 @@ export default function PersonalSite() {
           </SideBox>
 
           <SideBox title="my status">
-            <p>currently: building everything that makes me say "ugh, i wish there was an app for that"</p>
+            <p>currently: building everything that makes me say &quot;ugh, i wish there was an app for that&quot;</p>
           </SideBox>
           
           <SideBox title="my time">
@@ -86,12 +86,12 @@ export default function PersonalSite() {
 
           <div className="space-y-3 leading-relaxed" style={{ color: "#555" }}>
             <p>
-              hello, i'm anna! thanks for stopping by. this is the
+              hello, i&apos;m anna! thanks for stopping by. this is the
               personal side of my website, because honestly? we need to bring
               back the web of the 00s.
             </p>
             <p>
-              professionally i'm a fullstack developer (you can see the fancy version of
+              professionally i&apos;m a fullstack developer (you can see the fancy version of
               me by clicking the briefcase icon in the top right). but this part is 
               where i put all of my other interests!
             </p>
