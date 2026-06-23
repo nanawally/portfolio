@@ -35,7 +35,7 @@ const projects: Project[] = [
     summary: "2D rhythm game",
     tech: "Phaser, React, TypeScript, Java, Spring Boot, PostgreSQL",
     description:
-      "Thesis project with a self-taught game framework. Players run through levels synced to music, with a level editor and server-side song map validation.",
+      "Thesis project with a self-taught game framework. Players run through levels synced to music, with server-side song map validation.",
     link: "https://music-runner-gamma.vercel.app",
     github: "https://github.com/nanawally/examensprojekt-frontend",
     demo: null,
@@ -144,10 +144,36 @@ export default function ProSite() {
     }
   }
 
+  const sections = [
+    { id: "tech", label: "Tech" },
+    { id: "projects", label: "Projects" },
+    { id: "experience", label: "Experience" },
+    { id: "studies", label: "Studies" },
+    { id: "leadership", label: "Leadership" },
+    { id: "contact", label: "Contact" },
+  ];
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen scroll-smooth">
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 right-0 z-40 bg-background/90 backdrop-blur border-b border-border">
+        <div className="max-w-3xl mx-auto px-6 flex items-center justify-center h-12">
+          <div className="flex gap-6">
+            {sections.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="text-xs tracking-[0.15em] uppercase text-text-muted hover:text-primary transition-colors"
+              >
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       {/* Hero */}
-      <section className="max-w-3xl mx-auto px-6 pt-32 pb-16 text-center">
+      <section id="hero" className="max-w-3xl mx-auto px-6 pt-32 pb-16 text-center">
         <p className="text-sm tracking-[0.3em] text-primary uppercase mb-4">
           Software Developer
         </p>
@@ -189,7 +215,7 @@ export default function ProSite() {
       </section>
 
       {/* Tech Stack */}
-      <section className="max-w-3xl mx-auto px-6 py-16">
+      <section id="tech" className="max-w-3xl mx-auto px-6 py-16 scroll-mt-14">
         <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
           Tech Stack
         </h2>
@@ -216,7 +242,7 @@ export default function ProSite() {
       </section>
 
       {/* Projects */}
-      <section className="max-w-3xl mx-auto px-6 py-16">
+      <section id="projects" className="max-w-3xl mx-auto px-6 py-16 scroll-mt-14">
         <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
           Projects
         </h2>
@@ -288,7 +314,7 @@ export default function ProSite() {
       </section>
 
       {/* Experience */}
-      <section className="max-w-3xl mx-auto px-6 py-16">
+      <section id="experience" className="max-w-3xl mx-auto px-6 py-16 scroll-mt-14">
         <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
           Experience
         </h2>
@@ -317,7 +343,7 @@ export default function ProSite() {
       </section>
 
       {/* Studies */}
-      <section className="max-w-3xl mx-auto px-6 py-16">
+      <section id="studies" className="max-w-3xl mx-auto px-6 py-16 scroll-mt-14">
         <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
           Studies
         </h2>
@@ -346,7 +372,7 @@ export default function ProSite() {
       </section>
 
       {/* Leadership & Volunteering */}
-      <section className="max-w-3xl mx-auto px-6 py-16">
+      <section id="leadership" className="max-w-3xl mx-auto px-6 py-16 scroll-mt-14">
         <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
           Leadership & Volunteering
         </h2>
@@ -375,7 +401,7 @@ export default function ProSite() {
       </section>
 
       {/* Contact */}
-      <section className="max-w-3xl mx-auto px-6 py-16 pb-32">
+      <section id="contact" className="max-w-3xl mx-auto px-6 py-16 pb-32 scroll-mt-14">
         <h2 className="text-2xl font-serif font-bold mb-2 text-center tracking-wide">
           Contact
         </h2>
